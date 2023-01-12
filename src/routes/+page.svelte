@@ -2,9 +2,10 @@
 	import { HashConnect } from 'hashconnect';
 	import { browser } from '$app/environment';
 	import { TransferTransaction } from '@hashgraph/sdk';
+	import BladeButton from '$lib/BladeButton.svelte';
 
 	let hashconnect: any
-	let initData:any
+	let initData: any
 	let connectedId: string
 	let signer: any
 	let appMetadata	= {
@@ -68,3 +69,6 @@
 {#if connectedId}
 <button on:click={transact}>Transact</button>
 {/if}
+
+<h1>Blade options</h1>
+<BladeButton />

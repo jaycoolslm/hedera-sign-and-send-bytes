@@ -1,5 +1,5 @@
 import { json } from '@sveltejs/kit';
-import { TransferTransaction, AccountId , TransactionId, PrivateKey} from '@hashgraph/sdk';
+import { TransferTransaction, AccountId , TransactionId, PrivateKey, Client} from '@hashgraph/sdk';
  
 /** @type {import('./$types').RequestHandler} */
 export async function POST({ request }) {
@@ -13,7 +13,7 @@ export async function POST({ request }) {
         .setNodeAccountIds([new AccountId(3)])
         .setTransactionId(transactiondId)
         .freeze()
-    
+
     const signed = await tx.sign(PrivateKey.fromString(import.meta.env.VITE_PW))
     const bytes = signed.toBytes()
   return json(bytes);
